@@ -1,4 +1,110 @@
+.background{
+
+  margin:0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+
+
+
+}
+
+.background::after{
+  content:"";
+  background-image: url('../images/backdrop.jpg');
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.container{
+  margin-top: 5%;
+}
+
 .cardimgs{
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
+}
+
+.title{
+  font-size: 30px;
+  color: Black;
+  font-weight: bold;
+  border: solid;
+  position: absolute;
+  left: 40%;
+  padding: 1%;
+  top: 1%;
+  background-color: rgba(187, 186, 186, 0.4);
+  color: white;
+  border-color: black;
+
+}
+
+.instructions{
+  border: solid;
+  position: absolute;
+  margin-top: 4%;
+  margin-left: 2%;
+  margin-right: 60%;
+  padding: 3%;
+  background-color: rgba(187, 186, 186, 0.4);
+
+
+}
+
+.instructionstext{
+  color: white;
+
+}
+
+.winslossesdisplay{
+  float: right;
+  margin-right: 20%;
+  margin-top: 10%;
+  font-size: 30px;
+  background-color: rgba(187, 186, 186, 0.4);
+  color: white;
+  padding: 1%;
+  border: solid;
+  border-color: black;
+}
+
+
+.crystalsdisplay{
+  position: absolute;
+  margin-top: 18%;
+  margin-left: 22%;
+}
+
+.randomnumberdisplay{
+  position: absolute;
+  left: 0;
+  bottom: 45%;
+  border: solid;
+  border-color: black;
+  font-size: 30px;
+  background-color: rgba(187, 186, 186, 0.4);
+  color: white;
+  padding: 1%;
+
+
+}
+
+.userscoredisplay{
+  position: absolute;
+  left: 0;
+  bottom: 30%;
+  border: solid;
+  border-color: black;
+  font-size: 30px;
+  background-color: rgba(187, 186, 186, 0.4);
+  color: white;
+  padding: 1%;
+  /*margin-right: 2%;*/
+
 }

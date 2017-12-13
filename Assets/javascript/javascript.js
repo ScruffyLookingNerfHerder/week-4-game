@@ -1,3 +1,5 @@
+
+//variables
 var card1;
 var card2;
 var card3;
@@ -7,17 +9,19 @@ var cardimage2;
 var cardimage3;
 var cardimage4;
 var cardarray=[];
-var wins;
-var losses;
+var wins=0;
+var losses=0;
 var goalnumber=0;
-var userscore=0;
+var scorevar=0;
 
+//generate the random target number for user to try and achieve
 function rannumbergenerator (){
   goalnumber= Math.floor((Math.random()*(120-19))+19);
-  $(".randomnumberdisplay").text(goalnumber);
+  $(".randomnumberdisplay").text("Your Target Number is " + goalnumber);
 
 }
 
+//generate the values of the cards and put them in an array
 function cardvaluesgenerator (){
   card1= Math.floor((Math.random()*(12-1))+1);
   card2= Math.floor((Math.random()*(12-1))+1);
@@ -25,20 +29,9 @@ function cardvaluesgenerator (){
   card4= Math.floor((Math.random()*(12-1))+1);
   cardarray=[card1, card2, card3, card4];
 
-
-  // for (var i=0; i < cardarray.length; i++){
-  //   var imageCrystal=$("<img>");
-  //   imageCrystal.addClass("cardimgs");
-  //   imageCrystal.attr("src", "./Assets/images/acespades.jpg");
-  //   imageCrystal.attr("src", "./Assets/images/acediamonds.jpg");
-  //   imageCrystal.attr("src", "./Assets/images/aceclubs.jpg");
-  //   imageCrystal.attr("src", "./Assets/images/acehearts.jpg")
-  //   imageCrystal.attr("data-cardvalue", cardarray[i]);
-  //   $(".crystalsdisplay").append(imageCrystal);
-  // }
-
 }
 
+//generate the images for the cards and assign them values pulling from the card array created above
 function cardimagegenerator (){
 cardimage1=$("<img>");
 cardimage1.addClass("cardimgs");
@@ -67,46 +60,44 @@ $(".crystalsdisplay").append(cardimage4);
 }
 
 
-
-
-rannumbergenerator();
-cardvaluesgenerator();
-cardimagegenerator();
-game();
-
+//creates a click function for each card based on the classes given to them above. When clicked, adds the value of the card given to it above to the userscore and pushes to the DOM.
 function game(){
+  var userscore=0;
+  console.log('game init')
+  //runs the game
+  rannumbergenerator();
+  cardvaluesgenerator();
+  cardimagegenerator();
+$(".userscoredisplay").text("Your Current Score is " + userscore);
+$("#windisplay").text("Wins: " + wins);
+$("#lossesdisplay").text("Losses: " + losses);
 $(".cardimgs").on("click", function(){
     var cardvalue = ($(this).attr("data-cardvalue"));
     cardvalue = parseInt(cardvalue);
-    console.log(cardvalue);
+    //console.log(cardvalue);
     userscore += cardvalue;
+
+    console.log('userscore', userscore);
     // alert("New Score " + cardvalue);
-    $(".userscoredisplay").text(userscore);
+    $(".userscoredisplay").text("Your Current Score is " + userscore);
 
 
+    //determines conditions needed for win, loss, and reset
     if (userscore === goalnumber){
-      alert("Congratulations! You win! Press ok to start again!");
+
+      alert("Congratulations! You win! Press ok to start again!"  + userscore);
+
       wins++;
       $(".crystalsdisplay").empty();
-      rannumbergenerator();
-      cardvaluesgenerator();
-      cardimagegenerator();
-      userscore=0;
-      $(".userscoredisplay").text(userscore);
-      $(".randomnumberdisplay").text(goalnumber);
       game();
 
     }
     else if (userscore >= goalnumber){
-      alert("Oh no, you went over! You lose. Press ok to try again!");
+      console.log('else if')
+      alert("Oh no, you went over! You lose. Press ok to try again!" + userscore);
+
       losses++;
       $(".crystalsdisplay").empty();
-      rannumbergenerator();
-      cardvaluesgenerator();
-      cardimagegenerator();
-      userscore=0;
-      $(".userscoredisplay").text(userscore);
-      $(".randomnumberdisplay").text(goalnumber);
       game();
 
     }
@@ -114,28 +105,4 @@ $(".cardimgs").on("click", function(){
 
 };
 
-
-
-
-
-
-// function start(){
-//   if (goalnumber=0){
-//     rannumbergenerator();
-//     cardvaluesgenerator();
-//
-//   }
-//   else if (goalnumber==userscore){
-//     rannumbergenerator();
-//     cardvaluesgenerator();
-//     wins++;
-//   }
-//   else if (goalnumber > userscore){
-//     game();
-//   }
-//   else {
-//     rannumbergenerator();
-//     cardvaluesgenerator();
-//     losses--;
-//   }
-// }
+game();
