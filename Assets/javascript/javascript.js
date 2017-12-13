@@ -85,7 +85,7 @@ $(".cardimgs").on("click", function(){
     //determines conditions needed for win, loss, and reset
     if (userscore === goalnumber){
 
-      alert("Congratulations! You win! Press ok to start again!"  + userscore);
+      alert("Congratulations! You win! Press ok to start again!");
 
       wins++;
       $(".crystalsdisplay").empty();
@@ -94,7 +94,7 @@ $(".cardimgs").on("click", function(){
     }
     else if (userscore >= goalnumber){
       console.log('else if')
-      alert("Oh no, you went over! You lose. Press ok to try again!" + userscore);
+      alert("Oh no, your target number was " + goalnumber +", and you ended with " + userscore + ". You went over! You lose. Press ok to try again!");
 
       losses++;
       $(".crystalsdisplay").empty();
